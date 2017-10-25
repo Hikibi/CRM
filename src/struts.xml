@@ -6,7 +6,7 @@
 
 <struts>
 
-    <constant name="struts.devMode" value="true"/>
+    <constant name="struts.devMode" value="false"/>
 
     <package name="login" extends="json-default">
         <action name="login" class="com.lanou.HRD.action.StaffAction" method="login">
@@ -14,6 +14,22 @@
             <result name="input">/pages/login.jsp</result>
             <result name="error">/pages/login.jsp</result>
         </action>
+
+        <action name="findAll" class="com.lanou.HRD.action.StaffAction" method="findAll">
+            <result name="success">/pages/frame.jsp</result>
+        </action>
+
+
+        <action name="addDepart" class="com.lanou.HRD.action.DepartmentAction" method="addDepart">
+            <result name="success">/pages/department/listDepartment.jsp</result>
+        </action>
+
+        <action name="depart" class="com.lanou.HRD.action.DepartmentAction" method="findAll">
+            <result name="success" type="json">
+                <param name="root">departments</param>
+            </result>
+        </action>
+
     </package>
 
 </struts>

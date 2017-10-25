@@ -1,6 +1,8 @@
 package com.lanou.HRD.service.impl;
 
 import com.lanou.HRD.dao.StaffDao;
+import com.lanou.HRD.domain.Crm_staff;
+import com.lanou.HRD.domain.PageBean;
 import com.lanou.HRD.service.StaffService;
 import org.springframework.stereotype.Service;
 
@@ -18,5 +20,10 @@ public class StaffServiceImpl implements StaffService {
     @Override
     public boolean login(String loginName, String loginPwd) {
         return staffDao.login(loginName, loginPwd);
+    }
+
+    @Override
+    public PageBean<Crm_staff> findAll(int pc, int ps) {
+        return staffDao.findAll(pc, ps);
     }
 }

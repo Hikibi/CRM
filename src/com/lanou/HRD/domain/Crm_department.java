@@ -13,6 +13,12 @@ public class Crm_department {
     private String depID;
     private String depName;
 
+//    public Crm_department(String depID, String depName, List<Crm_post> posts) {
+//        this.depID = depID;
+//        this.depName = depName;
+//        this.posts = posts;
+//    }
+
     private List<Crm_post> posts;
 
     public List<Crm_post> getPosts() {

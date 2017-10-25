@@ -24,6 +24,11 @@ public class Crm_post {
         this.staffs = staffs;
     }
 
+    public Crm_post(String postId, String postName) {
+        this.postId = postId;
+        this.postName = postName;
+    }
+
     public Crm_post(String postName) {
         this.postName = postName;
     }

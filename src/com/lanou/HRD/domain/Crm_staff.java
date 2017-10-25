@@ -48,6 +48,7 @@ public class Crm_staff {
     public Crm_staff() {
     }
 
+
     @Override
     public String toString() {
         return "Crm_staff{" +
@@ -57,7 +58,6 @@ public class Crm_staff {
                 ", staffName='" + staffName + '\'' +
                 ", gender='" + gender + '\'' +
                 ", onDutyDate=" + onDutyDate +
-                ", crm_post=" + crm_post +
                 '}';
     }
 

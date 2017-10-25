@@ -13,12 +13,11 @@
         <property name="gender"/>
         <property name="onDutyDate"/>
 
-        <!--<many-to-one name="crm_post"-->
-                     <!--lazy="false"-->
-                     <!--class="com.lanou.HRD.domain.Crm_post"-->
-                     <!--column="postID"-->
-                     <!--cascade="all"/>-->
-
+        <many-to-one name="crm_post"
+                     lazy="false"
+                     class="com.lanou.HRD.domain.Crm_post"
+                     column="postID"
+                     cascade="all"/>
 
     </class>
 </hibernate-mapping>

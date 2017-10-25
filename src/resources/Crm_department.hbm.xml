@@ -13,6 +13,5 @@
             <key column="depId"/>
             <one-to-many class="com.lanou.HRD.domain.Crm_post"/>
         </set>
-
     </class>
 </hibernate-mapping>

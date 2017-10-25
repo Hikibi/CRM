@@ -9,11 +9,11 @@
         </id>
         <property name="postName"/>
 
-        <!--<many-to-one name="crm_department"-->
-                     <!--lazy="false"-->
-                     <!--class="com.lanou.HRD.domain.Crm_department"-->
-                     <!--column="depId"-->
-                     <!--cascade="all"/>-->
+        <many-to-one name="crm_department"
+                     lazy="false"
+                     class="com.lanou.HRD.domain.Crm_department"
+                     column="depId"
+                     cascade="all"/>
 
         <set name="staffs" cascade="all" inverse="false" lazy="false">
             <key column="postID"/>

@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>无标题文档</title>
 <link href="${pageContext.request.contextPath}/css/sys.css" type="text/css" rel="stylesheet" />
-
+    <script src="../../jquery-3.2.1.js" type="text/javascript"></script>
 </head>
 
 <body class="emp_body">
@@ -39,9 +39,9 @@
 	 <tr>
 	    <td>选择部门：</td>
 	    <td><select name="crmDepartment.depId">
-		    <option value="">----请--选--择----</option>
-		    <option value="ee050687bd1a4455a153d7bbb7000001" selected="selected">教学部</option>
-		    <option value="ee050687bd1a4455a153d7bbb7000002">咨询部</option>
+		    <option value="-1">----请--选--择----</option>
+		    <%--<option value="ee050687bd1a4455a153d7bbb7000001" selected="selected">教学部</option>--%>
+		    <%--<option value="ee050687bd1a4455a153d7bbb7000002">咨询部</option>--%>
 		</select>
   </td>
 	    <td>职务：</td>
@@ -51,4 +51,23 @@
 </form>
 
 </body>
+<script>
+    window.onload = function () {
+        $.post("depart", function (date) {
+            var _html = "";
+
+            for (var i = 0; i < date.length; i++) {
+
+                _html += "<option value='" + date[i].depID + "'>" + date[i].depName + "</option>"
+
+            }
+
+            $("#department").empty();
+
+            $("#department").append("<option value='-1'>--请选择--</option>");
+
+            $("#department").append(_html);
+        })
+    }
+</script>
 </html>
