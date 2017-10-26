@@ -1,6 +1,7 @@
-package com.lanou.HRD.service;
+package com.lanou.hrd.service;
 
-import com.lanou.HRD.domain.Crm_department;
+import com.lanou.hrd.domain.Crm_department;
+import com.lanou.hrd.domain.PageBean;
 
 import java.util.List;
 
@@ -12,5 +13,7 @@ public interface DepartmentService {
     void addDepart(Crm_department crm_department);
 
     List<Crm_department> findAll();
+
+    PageBean<Crm_department> findPaging(int pc, int ps);
 
 }

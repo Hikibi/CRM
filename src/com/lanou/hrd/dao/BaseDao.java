@@ -1,4 +1,6 @@
-package com.lanou.HRD.dao;
+package com.lanou.hrd.dao;
+
+import com.lanou.hrd.domain.PageBean;
 
 import java.io.Serializable;
 import java.util.List;
@@ -12,10 +14,13 @@ public interface BaseDao<T> {
     /**
      * 添加一个对象
      */
-    void add(Class<T> tClass);
+    void add(T t);
 
 
-
+    /**
+     * 分页查询结果
+     */
+    PageBean<T> findPaging(int pc, int ps, String hql);
 
     /**
      * 根据 主键id 查询某个对象

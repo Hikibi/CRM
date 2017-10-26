@@ -1,7 +1,7 @@
-package com.lanou.HRD.dao;
+package com.lanou.hrd.dao;
 
-import com.lanou.HRD.domain.Crm_staff;
-import com.lanou.HRD.domain.PageBean;
+import com.lanou.hrd.domain.Crm_staff;
+import com.lanou.hrd.domain.PageBean;
 
 
 /**

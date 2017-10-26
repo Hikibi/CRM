@@ -1,9 +1,9 @@
-package com.lanou.HRD.service.impl;
+package com.lanou.hrd.service.impl;
 
-import com.lanou.HRD.dao.StaffDao;
-import com.lanou.HRD.domain.Crm_staff;
-import com.lanou.HRD.domain.PageBean;
-import com.lanou.HRD.service.StaffService;
+import com.lanou.hrd.dao.StaffDao;
+import com.lanou.hrd.domain.Crm_staff;
+import com.lanou.hrd.domain.PageBean;
+import com.lanou.hrd.service.StaffService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -26,4 +26,11 @@ public class StaffServiceImpl implements StaffService {
     public PageBean<Crm_staff> findAll(int pc, int ps) {
         return staffDao.findAll(pc, ps);
     }
+
+    @Override
+    public void add(Crm_staff crm_staff) {
+        staffDao.add(crm_staff);
+    }
+
+
 }

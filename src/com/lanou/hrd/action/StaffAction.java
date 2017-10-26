@@ -1,28 +1,40 @@
-package com.lanou.HRD.action;
+package com.lanou.hrd.action;
 
-import com.lanou.HRD.domain.Crm_staff;
-import com.lanou.HRD.domain.PageBean;
-import com.lanou.HRD.service.StaffService;
+import com.lanou.hrd.domain.Crm_staff;
+import com.lanou.hrd.domain.PageBean;
+import com.lanou.hrd.service.StaffService;
 import com.opensymphony.xwork2.ActionSupport;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.List;
 
 /**
  * Created by dllo on 17/10/24.
  */
-@Controller("StaffAction")
+@Controller("staffAction")
 @Scope("prototype")
 public class StaffAction extends ActionSupport {
 
     @Resource
     private StaffService staffService;
 
+//    登录名
     private String loginName;
+//    登录密码
     private String loginPwd;
+//    姓名
+    private String staffName;
+//    性别
+    private String gender;
+//    入职时间
+    private Date onDutyDate;
+//    所属部门
+//    private String crmPost.crmDepartment.depId;
+
 
     public String login() {
         if (staffService.login(loginName, loginPwd)) {
@@ -42,6 +54,22 @@ public class StaffAction extends ActionSupport {
             addActionError("用户名或密码不能为空, 请重新登录");
         }
     }
+
+
+
+
+    /**
+     * 添加学生
+     */
+    public String addStaff(){
+
+        Crm_staff crm_staff = new Crm_staff(loginName, loginPwd, staffName, gender, onDutyDate);
+
+        staffService.add(crm_staff);
+
+        return SUCCESS;
+    }
+
 
     private PageBean<Crm_staff> pd;
 
@@ -111,5 +139,29 @@ public class StaffAction extends ActionSupport {
 
     public void setLoginPwd(String loginPwd) {
         this.loginPwd = loginPwd;
+    }
+
+    public String getStaffName() {
+        return staffName;
+    }
+
+    public void setStaffName(String staffName) {
+        this.staffName = staffName;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public Date getOnDutyDate() {
+        return onDutyDate;
+    }
+
+    public void setOnDutyDate(Date onDutyDate) {
+        this.onDutyDate = onDutyDate;
     }
 }

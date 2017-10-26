@@ -1,13 +1,10 @@
-package com.lanou.HRD.dao.impl;
+package com.lanou.hrd.dao.impl;
 
-import com.lanou.HRD.dao.StaffDao;
-import com.lanou.HRD.domain.Crm_staff;
-import com.lanou.HRD.domain.PageBean;
+import com.lanou.hrd.dao.StaffDao;
+import com.lanou.hrd.domain.Crm_staff;
+import com.lanou.hrd.domain.PageBean;
 import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
 
 import java.util.List;
 
@@ -51,24 +48,9 @@ public class StaffDaoImpl extends BaseDaoImpl<Crm_staff> implements StaffDao {
         pb.setTr(tr);
 
         Query query = session.createQuery("from Crm_staff ");
-//        List list = query.list();
 
         query.setFirstResult(((pc - 1) * ps));
         query.setMaxResults((pc * ps));
-
-
-//        for (Object o : query.list()) {
-//            System.out.println(o);
-//        };
-//        System.out.println(tr);
-//        List<Crm_staff> staff = query.list();
-//        for (Crm_staff s : staff) {
-//            System.out.println(s);
-//
-//        }
-
-//        System.out.println(query.list());
-
 
         List<Crm_staff> crm_staffs = query.list();
 

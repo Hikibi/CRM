@@ -9,26 +9,35 @@
     <constant name="struts.devMode" value="false"/>
 
     <package name="login" extends="json-default">
-        <action name="login" class="com.lanou.HRD.action.StaffAction" method="login">
+        <action name="login" class="com.lanou.hrd.action.StaffAction" method="login">
             <result name="success">/pages/frame.jsp</result>
             <result name="input">/pages/login.jsp</result>
             <result name="error">/pages/login.jsp</result>
         </action>
 
-        <action name="findAll" class="com.lanou.HRD.action.StaffAction" method="findAll">
+        <action name="findAll" class="staffAction" method="findAll">
             <result name="success">/pages/frame.jsp</result>
         </action>
 
 
-        <action name="addDepart" class="com.lanou.HRD.action.DepartmentAction" method="addDepart">
+        <action name="addDepart" class="departmentAction" method="addDepart">
             <result name="success">/pages/department/listDepartment.jsp</result>
         </action>
 
-        <action name="depart" class="com.lanou.HRD.action.DepartmentAction" method="findAll">
+        <action name="depart" class="departmentAction" method="findAll">
             <result name="success" type="json">
                 <param name="root">departments</param>
             </result>
         </action>
+
+        <action name="addPost" class="postAction" method="addPost">
+            <result name="success">/pages/department/listDepartment.jsp</result>
+        </action>
+
+        <action name="departPaging" class="departmentAction" method="findPaging">
+            <result name="success">/pages/department/listDepartment.jsp</result>
+        </action>
+
 
     </package>
 

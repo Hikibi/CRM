@@ -34,7 +34,7 @@
   </tr>
 </table>
 
-<form action="${pageContext.request.contextPath}/pages/post/listPost.jsp" method="post">
+<form action="${pageContext.request.contextPath}/addPost.action" method="post">
 	<table width="88%" border="0" class="emp_table" style="width:80%;">
 	 <tr>
 	    <td>选择部门：</td>
@@ -45,7 +45,7 @@
 		</select>
   </td>
 	    <td>职务：</td>
-	    <td><input type="text" name="postName" value="总监"/> </td>
+	    <td><input type="text" name="postName"/> </td>
 	  </tr>
 	</table>
 </form>

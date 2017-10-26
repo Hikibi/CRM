@@ -1,8 +1,9 @@
-package com.lanou.HRD.domain;
+package com.lanou.hrd.domain;
 
 import org.springframework.stereotype.Component;
 
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by dllo on 17/10/24.
@@ -19,13 +20,13 @@ public class Crm_department {
 //        this.posts = posts;
 //    }
 
-    private List<Crm_post> posts;
+    private Set<Crm_post> posts = new HashSet<>();
 
-    public List<Crm_post> getPosts() {
+    public Set<Crm_post> getPosts() {
         return posts;
     }
 
-    public void setPosts(List<Crm_post> posts) {
+    public void setPosts(Set<Crm_post> posts) {
         this.posts = posts;
     }
 
