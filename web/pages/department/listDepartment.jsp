@@ -69,7 +69,7 @@
     <tr class="tabtd1">
         <td align="center">${depart.depName}</td>
         <td width="7%" align="center">
-            <a href="${pageContext.request.contextPath}/pages/department/addOrEditDepartment.jsp"><img
+            <a href="${pageContext.request.contextPath}/IdDepart.action?depName=${depart.depName}&depID=${depart.depID}"><img
                     src="${pageContext.request.contextPath}/images/button/modify.gif" class="img"/></a>
         </td>
         </c:forEach>
@@ -129,15 +129,15 @@
                         [${i}]
                     </c:when>
                     <c:otherwise>
-                        <a href=departPaging.action?method=${pd.url}&pc=${i}">${i}</a>
+                        <a href="departPaging.action?pc=${i}">${i}</a>
                     </c:otherwise>
                 </c:choose>
             </c:forEach>
 
             <c:if test="${pd.pc < pd.tp}">
-                <a href="departPaging.action?method=${pd.url}&pc=${pd.pc+1}">[下一页]</a>&nbsp;&nbsp;
+                <a href="departPaging.action?pc=${pd.pc+1}">[下一页]</a>&nbsp;&nbsp;
             </c:if>
-            <a href="departPaging.action?method=${pd.url}&pc=${pd.tp}">[尾页]</a>
+            <a href="departPaging.action?pc=${pd.tp}">[尾页]</a>
 
             <%--<a href="#">[下一页]</a>&nbsp;&nbsp;--%>
             <%--<a href="#">[尾页]</a>--%>

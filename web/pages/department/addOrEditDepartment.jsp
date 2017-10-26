@@ -1,3 +1,4 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -34,14 +35,18 @@
   </tr>
 </table>
 
-<form action="${pageContext.request.contextPath}/addDepart.action" method="post">
+<form action="${pageContext.request.contextPath}/addDepart.action?depID=${depID}" method="post">
 	<table width="88%" border="0" class="emp_table" style="width:80%;">
 	 <tr>
 	    <td>部门名称：</td>
-	    <td><input type="text" name="depName"/></td>
+	    <td><input type="text" name="depName" value="${depName}"/></td>
 	  </tr>
 	</table>
 </form>
+<br><br><br>
+<font color="#ff0000">
+    <s:actionerror/>
+</font>
 
 </body>
 </html>

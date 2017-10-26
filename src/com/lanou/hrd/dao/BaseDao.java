@@ -38,7 +38,7 @@ public interface BaseDao<T> {
      * 根据条件查询, 返回查询到的结果集合
      * @return 查询到的结果
      */
-    List<T> find(String hql, Map<String, Object> params);
+    List<T> find(String hql, Object[] params);
 
     /**
      * 根据条件查询, 返回查询到的第一个对象
@@ -46,6 +46,8 @@ public interface BaseDao<T> {
      * @param params 查询语句的参数列表
      * @return 第一个查询到的对象
      */
-    T findSingle(String hql, Map<String, Object> params);
+    T findSingle(String hql, Object[] params);
+
+    void update(T t);
 
 }

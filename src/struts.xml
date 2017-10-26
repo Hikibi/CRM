@@ -21,7 +21,8 @@
 
 
         <action name="addDepart" class="departmentAction" method="addDepart">
-            <result name="success">/pages/department/listDepartment.jsp</result>
+            <result name="success" type="chain">departPaging</result>
+            <result name="input">/pages/department/addOrEditDepartment.jsp</result>
         </action>
 
         <action name="depart" class="departmentAction" method="findAll">
@@ -32,12 +33,16 @@
 
         <action name="addPost" class="postAction" method="addPost">
             <result name="success">/pages/department/listDepartment.jsp</result>
+            <!--<result name="input">/pages/department/addOrEditDepartment.jsp</result>-->
         </action>
 
         <action name="departPaging" class="departmentAction" method="findPaging">
             <result name="success">/pages/department/listDepartment.jsp</result>
         </action>
 
+        <action name="IdDepart" class="departmentAction" method="IdDepart">
+            <result name="success">/pages/department/addOrEditDepartment.jsp</result>
+        </action>
 
     </package>
 

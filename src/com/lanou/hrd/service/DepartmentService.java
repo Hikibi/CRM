@@ -16,4 +16,10 @@ public interface DepartmentService {
 
     PageBean<Crm_department> findPaging(int pc, int ps);
 
+    void departUpdate(Crm_department crm_department);
+
+    Crm_department findID(String depID);
+
+    Crm_department findSingle(String depName);
+
 }

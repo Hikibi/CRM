@@ -12,6 +12,7 @@ import org.springframework.util.StringUtils;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Created by dllo on 17/10/25.
@@ -25,25 +26,55 @@ public class DepartmentAction extends ActionSupport {
 
     private String depName;
 
+    private String depID;
+
 
     /**
      * 添加部门
      */
-    public String addDepart(){
+    public String addDepart() {
 
-        System.out.println(depName);
+        Crm_department depart = departmentService.findSingle(depName);
 
-        Crm_department crm_department = new Crm_department(depName);
+        if (depart != null) {
 
-        departmentService.addDepart(crm_department);
+            addActionError("添加部门名称相同, 请重新填写");
+
+            return INPUT;
+
+        } else {
+
+            if (!StringUtils.isEmpty(depID)) {
+
+//        使用 findID 方法 获取 department 的全部数值, 如果有
+                Crm_department department = departmentService.findID(depID);
+
+                department.setDepName(depName);
+
+                departmentService.departUpdate(department);
+
+            } else {
+
+                Crm_department crm_department = new Crm_department(depName);
+
+                departmentService.addDepart(crm_department);
+
+            }
+        }
 
         return SUCCESS;
     }
 
-    public void addDepartLogin() {
+    /**
+     * 如果id不存在代表没有添加
+     * 如果id存在代表更改
+     */
+    public void validateAddDepart() {
+
         if (StringUtils.isEmpty(depName)) {
             addActionError("添加部门名称不能为空, 请重新填写");
         }
+
     }
 
     private List<Crm_department> departments;
@@ -51,13 +82,13 @@ public class DepartmentAction extends ActionSupport {
     /**
      * 查询所有部门
      */
-    public String findAll(){
+    public String findAll() {
 
         departments = departmentService.findAll();
 
-        for (Crm_department department : departments) {
-            System.out.println(department);
-        }
+//        for (Crm_department department : departments) {
+//            System.out.println(department);
+//        }
 
 
         return SUCCESS;
@@ -68,9 +99,7 @@ public class DepartmentAction extends ActionSupport {
     /**
      * 分页查询所有部门
      */
-    public String findPaging(){
-
-//        HttpServletRequest req = (HttpServletRequest) ActionContext.getContext().get(org.apache.struts2.StrutsStatics.HTTP_REQUEST);
+    public String findPaging() {
 
 //        获得 当前页码数
         int pc = getPc();
@@ -79,21 +108,6 @@ public class DepartmentAction extends ActionSupport {
 //        传递 pc, ps 获得 pageBean
         pd = departmentService.findPaging(pc, ps);
 
-//        List<Crm_department> beanList = pd.getBeanList();
-
-//        pd.setUrl(req.getParameter("method"));
-
-//        depName = "sss";
-
-
-//        for (Crm_department c : beanList) {
-//
-//            System.out.println(c);
-//
-//            System.out.println(c.getDepName());
-//
-//        }
-
         return SUCCESS;
     }
 
@@ -101,18 +115,34 @@ public class DepartmentAction extends ActionSupport {
     private String pc;
 
     private int getPc() {
-		/*
-			1. 得到 pageCode
+        /*
+            1. 得到 pageCode
 				> 如果 pc 参数不存在, pc = 1
 				> 如果 pc 参数存在, 转成 int 类型
 		 */
 
         String value = pc;
+
+        System.out.println(value);
+
         if (value == null || value.trim().isEmpty()) {
             return 1;
         }
         return Integer.parseInt(value);
     }
+
+    /**
+     * 用 id查询 部门信息
+     */
+    public String IdDepart() {
+
+        Crm_department crm_department = departmentService.findID(depID);
+
+        System.out.println(crm_department);
+
+        return SUCCESS;
+    }
+
 
     public PageBean<Crm_department> getPd() {
         return pd;
@@ -140,5 +170,13 @@ public class DepartmentAction extends ActionSupport {
 
     public void setDepName(String depName) {
         this.depName = depName;
+    }
+
+    public String getDepID() {
+        return depID;
+    }
+
+    public void setDepID(String depID) {
+        this.depID = depID;
     }
 }

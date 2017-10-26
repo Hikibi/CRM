@@ -40,7 +40,7 @@ public class BaseDaoImpl<T> extends HibernateDaoSupport implements BaseDao<T> {
     }
 
     @Override
-    public List<T> find(String hql, Map<String, Object> params) {
+    public List<T> find(String hql, Object[] params) {
 
         List<T> tList = (List<T>) getHibernateTemplate().find(hql, params);
 
@@ -48,26 +48,27 @@ public class BaseDaoImpl<T> extends HibernateDaoSupport implements BaseDao<T> {
     }
 
     @Override
-    public T findSingle(String hql, Map<String, Object> params) {
+    public T findSingle(String hql, Object[] params) {
 
         List<T> tList = (List<T>) getHibernateTemplate().find(hql, params);
 
-        if (tList.size() > 0){
+        if (tList.size() > 0) {
             return tList.get(0);
+        } else {
+            return null;
         }
 
-        return null;
     }
 
-//    查找总页数
-    private int count(String hql){
+    //    查找总页数
+    private int count(String hql) {
 
         return getHibernateTemplate().find(hql).size();
 
     }
 
     //    分页查询
-    public PageBean<T> findPaging(int pc, int ps, String hql){
+    public PageBean<T> findPaging(int pc, int ps, String hql) {
 
 //        创建pb
         PageBean<T> pb = new PageBean<>();
@@ -85,7 +86,7 @@ public class BaseDaoImpl<T> extends HibernateDaoSupport implements BaseDao<T> {
         Query query = session.createQuery(hql);
 
         query.setFirstResult(((pc - 1) * ps));
-        query.setMaxResults((pc * ps));
+        query.setMaxResults(ps);
 
         List<T> tList = query.list();
 
@@ -98,6 +99,10 @@ public class BaseDaoImpl<T> extends HibernateDaoSupport implements BaseDao<T> {
     /**
      * 查找并更改
      */
+    @Override
+    public void update(T t) {
+        getHibernateTemplate().update(t);
+    }
 
 
 }
