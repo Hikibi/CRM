@@ -58,7 +58,6 @@ public class DepartmentServiceImpl implements DepartmentService {
 
         Object[] params = {depName};
 
-
         return departmentDao.findSingle(hql, params);
 
     }

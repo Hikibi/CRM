@@ -8,12 +8,12 @@ import com.lanou.hrd.domain.Crm_post;
  */
 public class PostDaoImpl extends BaseDaoImpl<Crm_post> implements PostDao {
 
-    /**
-     * 添加职务
-     * @param crm_post 职务详细信息
-     */
-    @Override
-    public void addPost(Crm_post crm_post) {
-        getHibernateTemplate().save(crm_post);
-    }
+//    /**
+//     * 添加职务
+//     * @param crm_post 职务详细信息
+//     */
+//    @Override
+//    public void addPost(Crm_post crm_post) {
+//        getHibernateTemplate().save(crm_post);
+//    }
 }
